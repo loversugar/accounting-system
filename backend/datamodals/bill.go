@@ -19,4 +19,5 @@ type Category struct {
 	ID int
 	CategoryName string `gorm:"column:category_name"`
 	CategoryUrl string `gorm:"column:category_url"`
+	UserId int `gorm:"column:user_id"'`
 }
