@@ -4,10 +4,10 @@ import "time"
 
 type Bill struct {
 	ID int
-	OpenId int `gorm:"column:open_id"`
+	OpenId string `gorm:"column:open_id"`
 	Username string `gorm:"column:username"`
 	Consumption float32 `gorm:"column:consumption"`
-	CreateAt time.Time
+	CreateTime time.Time `gorm:"column:create_time"`
 }
 
 type BillCategory struct {
