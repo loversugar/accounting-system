@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"accounting/api"
+	"github.com/gin-gonic/gin"
+)
 
 func main()  {
 	router := gin.Default()
@@ -8,6 +11,8 @@ func main()  {
 	router.GET("/ping", func(context *gin.Context) {
 		context.Writer.Write([]byte("pong"))
 	})
+
+	api.Routes(router)
 
 	router.Run(":8888")
 
