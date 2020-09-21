@@ -1,12 +1,41 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/detail/detail",
+    "pages/record/record",
+    "pages/mine/mine"
   ],
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#515151",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/detail/detail",
+        "text": "明细",
+        "iconPath": "images/flow1.png",
+        "selectedIconPath": "images/flow2.png"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "发布",
+        "iconPath": "images/add.png",
+        "selectedIconPath": "images/add.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "明细",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine2.png"
+      }
+    ]
+  },
+  
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#00b38a",
+    "navigationBarTitleText": "Totti记账",
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
