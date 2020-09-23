@@ -1,25 +1,20 @@
 // pages/record/record.js
+const app =  getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    navTitle: "发布",
+    prePageUrl: String
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideTabBar({
-      animation: true,
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
 
   },
 
@@ -34,6 +29,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      prePageUrl: app.globalData.preTabUrl
+    })
+    wx.hideTabBar({
+      animation: true,
+    });
 
   },
 

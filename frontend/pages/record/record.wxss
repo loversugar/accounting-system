@@ -1,1 +1,5 @@
 /* pages/record/record.wxss */
+
+.bar {
+    background-color: black;
+}

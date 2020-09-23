@@ -1,0 +1,28 @@
+.nav {
+    background-color: #00b38a;
+}
+
+.nav-scope {
+    position: relative;
+}
+
+.back-arrow {
+    left: 32px;
+    margin-top: 10px;
+    width: 25px;
+    height: 100%;
+}
+
+.back-arrow-image {
+    width: 25px;
+    height: 25px;
+}
+
+.nav-title {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+    bottom: 50%;
+    left: 47%;
+}

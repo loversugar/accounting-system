@@ -1,4 +1,6 @@
 // pages/detail/detail.js
+const app  =  getApp();
+
 Page({
 
   /**
@@ -12,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     
   },
 
   /**
@@ -26,7 +28,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.preTabUrl = "/pages/detail/detail"
+    wx.showTabBar({
+      animation: true,
+    });
   },
 
   /**

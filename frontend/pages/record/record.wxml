@@ -1,14 +1,1 @@
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
-<view >jifefjie</view>
+<nav nav-title="{{navTitle}}" pre-page-url="{{prePageUrl}}"></nav>

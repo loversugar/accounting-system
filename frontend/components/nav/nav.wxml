@@ -1,0 +1,9 @@
+<view style="height:{{statusHeight + navHeight}}px" class="nav">
+    <view style="height:{{statusHeight}}px"></view>
+    <view style="height:{{navHeight}}px" class="nav-scope">
+        <view class="back-arrow" bind:tap="back">
+            <image class="back-arrow-image" src="/images/left-arrow.png" /> 
+        </view>
+        <view class="nav-title">{{navTitle}}</view> 
+    </view>
+</view>
