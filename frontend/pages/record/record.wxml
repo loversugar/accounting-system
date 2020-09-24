@@ -1,1 +1,19 @@
-<nav nav-title="{{navTitle}}" pre-page-url="{{prePageUrl}}"></nav>
+<nav
+ nav-title="{{navTitle}}"
+ pre-page-url="{{prePageUrl}}"
+/>
+<scroll-view scroll-y="true">
+	<view class="categories">
+		<block
+		 wx:key="this"
+		 wx:for="{{10}}"
+		>
+			<tag
+			 width="{{tagWidth}}"
+			 class="tag"
+			 bind:tap="click"
+			/>
+		</block>
+	</view>
+</scroll-view>
+

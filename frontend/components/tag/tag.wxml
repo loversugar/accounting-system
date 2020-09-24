@@ -1,0 +1,11 @@
+<view
+ class="nav"
+ style="width:{{width}}px"
+>
+	<i
+	 style="font-size:30px;background-color:{{iconfontBackgroundColor}}"
+	 class="iconfont icon-shucai small-tag"
+	/>
+	<text class="item-name">蔬菜</text>
+</view>
+

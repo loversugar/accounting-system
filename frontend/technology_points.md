@@ -8,6 +8,7 @@
 ***
 >getCurrentPages()获取当前页面属性
 >switchTab跳转到tabBar页面，关闭其他***非tabBar***页面 reLanuch关闭所有页面，打开应用中某个页面能触发onLoad,但是前者不能
+>scroll-view组件不能在该组件上定义class
 ***
 ### 小程序问题
 >自定义顶部导航栏，与原生顶部导航栏字体样式在微信开发者工具中，显示一致，但是在真机环境下不一致。

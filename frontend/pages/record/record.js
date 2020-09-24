@@ -1,5 +1,6 @@
 // pages/record/record.js
 const app =  getApp();
+const systemInfo = wx.getSystemInfoSync();
 
 Page({
 
@@ -8,14 +9,21 @@ Page({
    */
   data: {
     navTitle: "发布",
-    prePageUrl: String
+    prePageUrl: String,
+    tagWidth: Number
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      tagWidth: (systemInfo.screenWidth - 100) / 4
+    })
+  },
 
+  click: function(e) {
+    console.log(e)
   },
 
   /**
