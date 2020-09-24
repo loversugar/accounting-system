@@ -3,14 +3,35 @@ const app =  getApp();
 const systemInfo = wx.getSystemInfoSync();
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     navTitle: "发布",
     prePageUrl: String,
-    tagWidth: Number
+    tagWidth: Number,
+    tags: [
+      {
+        id: 1,
+        name: "蔬菜",
+        iconfontName: "icon-chongwu"
+      },
+      {
+        id: 2,
+        name: "水果",
+        iconfontName: "icon-shucai"
+      },
+      {
+        id: 3,
+        name :"交通",
+        iconfontName: "icon-jiaotong"
+      },
+      {
+        id: 4,
+        name : "宠物",
+        iconfontName: "icon-shuiguo"
+      }
+    ]
   },
 
   /**
@@ -22,8 +43,16 @@ Page({
     })
   },
 
-  click: function(e) {
-    console.log(e)
+  onClickOne(e) {
+    for (var i=0; i<this.data.tags.length; i++) {
+      var tag = this.data.tags[i];
+      if(tag.id === e.detail.tagId) {
+        this.data.tags[i].isClick = true
+      } else {
+        this.data.tags[i].isClick = false
+      }
+    }
+    console.log(this.data.tags)
   },
 
   /**

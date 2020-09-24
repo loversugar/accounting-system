@@ -1,11 +1,13 @@
 <view
  class="nav"
  style="width:{{width}}px"
+ bind:tap="click"
 >
 	<i
-	 style="font-size:30px;background-color:{{iconfontBackgroundColor}}"
-	 class="iconfont icon-shucai small-tag"
+	 style="font-size:30px;background-color:{{tag.isClick ? '#00b38a' : '#f1f1f1'}}"
+	 class="iconfont {{tag.iconfontName}} small-tag"
 	/>
-	<text class="item-name">蔬菜</text>
+	<view>{{tag.isClick}}</view>
+	<text class="item-name">{{tag.name}}</text>
 </view>
 

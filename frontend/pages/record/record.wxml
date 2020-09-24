@@ -5,13 +5,14 @@
 <scroll-view scroll-y="true">
 	<view class="categories">
 		<block
-		 wx:key="this"
-		 wx:for="{{10}}"
+		 wx:key="id"
+		 wx:for="{{tags}}"
 		>
 			<tag
 			 width="{{tagWidth}}"
+			 tag="{{item}}"
 			 class="tag"
-			 bind:tap="click"
+			 bind:clickOne="onClickOne"
 			/>
 		</block>
 	</view>
