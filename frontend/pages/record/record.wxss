@@ -11,3 +11,9 @@
     display: flex;
     flex-wrap: wrap;    
 }
+
+.custom-board {
+    position: fixed;
+    top: 60%;
+    width: 100%;
+}

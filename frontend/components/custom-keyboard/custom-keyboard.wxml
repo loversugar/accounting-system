@@ -1,0 +1,22 @@
+<view>
+	<view class="top-input">
+		<text class="iconfont icon-beizhuyitianxie">备注</text>
+		<input
+		 class="note"
+		 placeholder="点击写备注..."
+		/>
+		<view>0.00</view>
+	</view>
+	<view
+	 style="grid-auto-columns: minmax({{keyWidth}}px, auto)"
+	 class="board"
+	>
+		<block
+		 wx:key="index"
+		 wx:for="{{boardKeys}}"
+		>
+			<view class="key-content">{{item.number}}</view>
+		</block>
+	</view>
+</view>
+

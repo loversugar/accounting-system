@@ -54,10 +54,10 @@ Page({
       }
       dataArray = dataArray.concat(currentTag)
     }
-    console.log(dataArray)
     this.setData({
       tags: dataArray
     })
+    // 弹出键盘
   },
 
   onClickOne(e) {

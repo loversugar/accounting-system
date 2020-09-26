@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "nav": "/components/nav/nav",
-    "tag": "/components/tag/tag"
+    "tag": "/components/tag/tag",
+    "custom-board": "/components/custom-keyboard/custom-keyboard"
   },
   "navigationStyle": "custom"
 }
