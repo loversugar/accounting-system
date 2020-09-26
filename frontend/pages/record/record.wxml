@@ -12,6 +12,8 @@
 			 width="{{tagWidth}}"
 			 tag="{{item}}"
 			 class="tag"
+			 bind:tap="click"
+			 data-item="{{item}}"
 			 bind:clickOne="onClickOne"
 			/>
 		</block>

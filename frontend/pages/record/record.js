@@ -42,6 +42,23 @@ Page({
       tagWidth: (systemInfo.screenWidth - 100) / 4
     })
   },
+  click(e) {
+    var dataArray = [];
+    let selectedItemId = e.target.dataset.item.id
+    for (let i=0; i<this.data.tags.length; i++) {
+      let currentTag = this.data.tags[i]
+      if (selectedItemId == currentTag.id) {
+        currentTag.iconfontBackgroundColor = "#00b38a"
+      } else {
+        currentTag.iconfontBackgroundColor = "#f1f1f1"
+      }
+      dataArray = dataArray.concat(currentTag)
+    }
+    console.log(dataArray)
+    this.setData({
+      tags: dataArray
+    })
+  },
 
   onClickOne(e) {
     for (var i=0; i<this.data.tags.length; i++) {
