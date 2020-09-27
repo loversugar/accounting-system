@@ -3,6 +3,7 @@ const systemInfo = wx.getSystemInfoSync();
 Component({
   data: {
     keyWidth: Number,
+    keyHeight: Number,
     boardKeys: [
       {
         number: "7"
@@ -57,8 +58,10 @@ Component({
   lifetimes: {
     ready() {
       let screenWidth = systemInfo.screenWidth;
+      let screenHeight = systemInfo.screenHeight;
       this.setData({
-        keyWidth: screenWidth / 4
+        keyWidth: screenWidth / 4,
+        keyHeight: ((screenHeight * 0.4) - 35) / 4
       })
     }
   },

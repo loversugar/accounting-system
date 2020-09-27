@@ -1,5 +1,4 @@
 /* pages/record/record.wxss */
-
 .bar {
     background-color: black;
 }
@@ -10,6 +9,7 @@
     padding-right: 45px;
     display: flex;
     flex-wrap: wrap;    
+    background-color: #ffffff;
 }
 
 .custom-board {

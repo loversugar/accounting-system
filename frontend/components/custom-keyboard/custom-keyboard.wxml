@@ -1,14 +1,15 @@
-<view>
+<view class="keyboard">
 	<view class="top-input">
-		<text class="iconfont icon-beizhuyitianxie">备注</text>
+		<text class="iconfont icon-beizhuyitianxie"/>
+
 		<input
 		 class="note"
 		 placeholder="点击写备注..."
 		/>
-		<view>0.00</view>
+		<view class="money">0.00</view>
 	</view>
 	<view
-	 style="grid-auto-columns: minmax({{keyWidth}}px, auto)"
+	 style="grid-auto-columns: minmax({{keyWidth}}px, auto);grid-auto-rows: minmax({{keyHeight}}px, auto)"
 	 class="board"
 	>
 		<block
