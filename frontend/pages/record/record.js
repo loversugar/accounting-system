@@ -2,6 +2,8 @@
 const app =  getApp();
 const systemInfo = wx.getSystemInfoSync();
 
+var currentSelectedKeyId = 0
+
 Page({
   /**
    * 页面的初始数据
@@ -10,6 +12,7 @@ Page({
     navTitle: "发布",
     prePageUrl: String,
     tagWidth: Number,
+    isShowKeyboard: false,
     tags: [
       {
         id: 1,
@@ -57,7 +60,17 @@ Page({
     this.setData({
       tags: dataArray
     })
+
+    this.onClickOne(e)
+
     // 弹出键盘
+    if (currentSelectedKeyId === selectedItemId) {
+      return
+    }
+
+    this.setData({
+      isShowKeyboard: true
+    })
   },
 
   onClickOne(e) {
@@ -69,7 +82,6 @@ Page({
         this.data.tags[i].isClick = false
       }
     }
-    console.log(this.data.tags)
   },
 
   /**

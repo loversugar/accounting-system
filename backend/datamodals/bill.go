@@ -20,4 +20,6 @@ type Category struct {
 	CategoryName string `gorm:"column:category_name"`
 	CategoryUrl string `gorm:"column:category_url"`
 	UserId int `gorm:"column:user_id"'`
+	IsPrivate bool `gorm:"column:is_private"`
+	Deleted bool `gorm:"column:deleted"`
 }

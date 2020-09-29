@@ -4,6 +4,8 @@ Component({
   data: {
     keyWidth: Number,
     keyHeight: Number,
+    money: "0.00",
+    note: "",
     boardKeys: [
       {
         number: "7"
@@ -15,7 +17,7 @@ Component({
         number: "9"
       },
       {
-        number: "8"
+        number: "今天"
       },
       {
         number: "4"
@@ -27,7 +29,7 @@ Component({
         number: "6"
       },
       {
-        number: "8"
+        number: "+"
       },
       {
         number: "1"
@@ -39,19 +41,19 @@ Component({
         number: "3"
       },
       {
-        number: "8"
+        number: "-"
       },
       {
-        number: "8"
+        number: "."
       },
       {
         number: "0"
       },
       {
-        number: "8"
+        number: "删除"
       },
       {
-        number: "8"
+        number: "完成"
       }
     ]
   },
@@ -66,5 +68,22 @@ Component({
     }
   },
   properties: {},
-  methods: {}
+  methods: {
+    click(e) {
+
+      if (this.data.money === "0.00") {
+        this.setData({
+          money: e.target.dataset.item.number
+        })
+      } else {
+        this.setData({
+          money: this.data.money + e.target.dataset.item.number
+        })
+      }
+    },
+
+    finish() {
+
+    }
+  }
 })

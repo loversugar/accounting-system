@@ -24,5 +24,7 @@ create table category (
     id int not null primary key auto_increment unique,
     category_name varchar(100) not null,
     category_url varchar(255),
-    user_id int not null
+    user_id int null,
+    is_private tinyint(1),
+    deleted tinyint(1)
 )

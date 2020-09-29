@@ -5,8 +5,8 @@
 		<input
 		 class="note"
 		 placeholder="点击写备注..."
-		/>
-		<view class="money">0.00</view>
+		>{{note}}</input>
+		<view class="money">{{money}}</view>
 	</view>
 	<view
 	 style="grid-auto-columns: minmax({{keyWidth}}px, auto);grid-auto-rows: minmax({{keyHeight}}px, auto)"
@@ -16,7 +16,7 @@
 		 wx:key="index"
 		 wx:for="{{boardKeys}}"
 		>
-			<view class="key-content">{{item.number}}</view>
+			<view class="key-content" bind:tap="click" data-item="{{item}}">{{item.number}}</view>
 		</block>
 	</view>
 </view>

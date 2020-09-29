@@ -18,7 +18,8 @@
 ***
 > 在wxml中为方法传入参数，需要用data-xxx={{item}}的形式来获取
 ***
-> div中让内容文字居中，text-align:center 水平居中，padding: 50px 20px垂直居中(高度不固定的情况下)
+> div中让内容文字居中，1. 知道高度的情况下使用 text-align:center 水平居中，padding: 50px 20px垂直居中(高度不固定的情况下)  
+> padding设置如果长度没有达到，内容回自动居中 2.使用display:flex justify-content: center; align-items: center;
 ### 小程序问题
 >自定义顶部导航栏，与原生顶部导航栏字体样式在微信开发者工具中，显示一致，但是在真机环境下不一致。
 > 如font-weight

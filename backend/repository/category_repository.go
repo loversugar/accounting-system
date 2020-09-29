@@ -32,3 +32,9 @@ func (c CategoryRepository) InsertCategory(category *datamodals.Category) error 
 	})
 }
 
+func (c CategoryRepository) getCategoriesByUserId(userId int) *[]datamodals.Category   {
+	var categories []datamodals.Category
+	c.db.Where("user_id = ? or is_private = 0", userId).Find(&categories)
+	return &categories
+}
+

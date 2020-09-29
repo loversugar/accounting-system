@@ -14,11 +14,13 @@
 			 class="tag"
 			 bind:tap="click"
 			 data-item="{{item}}"
-			 bind:clickOne="onClickOne"
 			/>
 		</block>
 	</view>
 </scroll-view>
 
-<custom-board class="custom-board" />
+<custom-board
+ class="custom-board"
+ wx:if="{{isShowKeyboard}}"
+/>
 
