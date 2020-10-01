@@ -1,7 +1,7 @@
 <view wx:if="{{isHide}}">
 	<view wx:if="{{canIUse}}">
 		<view class='header'>
-			<image src='/images/wx_login.png' />
+			<image src='/images/wechat.png' />
 		</view>
 
 		<view class='content'>

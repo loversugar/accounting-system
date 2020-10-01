@@ -9,6 +9,7 @@ import (
 
 type IUserRepository interface {
 	InsertUser(user *datamodals.User) error
+	GetUserByOpenid(openid string) *datamodals.User
 }
 
 func NewUserRepository() IUserRepository {
@@ -21,6 +22,12 @@ func NewUserRepository() IUserRepository {
 
 type UserRepository struct {
 	db *gorm.DB
+}
+
+func (u UserRepository) GetUserByOpenid(openid string) *datamodals.User {
+	var user datamodals.User
+	u.db.Where("openid = ?", openid).First(&user)
+	return &user
 }
 
 func (u UserRepository) InsertUser(user *datamodals.User) error {

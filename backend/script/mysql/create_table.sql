@@ -1,7 +1,7 @@
 create table user
 (
     id int not null primary key unique auto_increment,
-    openId    varchar(100) not null unique,
+    openid    varchar(100) not null unique,
     username  varchar(255),
     create_time timestamp
 )
