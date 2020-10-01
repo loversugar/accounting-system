@@ -24,10 +24,13 @@ type UserRepository struct {
 	db *gorm.DB
 }
 
-func (u UserRepository) GetUserByOpenid(openid string) *datamodals.User {
-	var user datamodals.User
-	u.db.Where("openid = ?", openid).First(&user)
-	return &user
+func (u UserRepository) GetUserByOpenid(openid string) (user *datamodals.User) {
+	user = &datamodals.User{}
+	u.db.Where("openid = ?", openid).First(user)
+	if user.ID == 0 && user.OpenId == "" {
+		return nil
+	}
+	return user
 }
 
 func (u UserRepository) InsertUser(user *datamodals.User) error {

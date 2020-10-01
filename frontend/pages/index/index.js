@@ -26,26 +26,32 @@ Page({
                       }
                     })
                   );
-                  // 发送 res.code 到后台换取 openId, sessionKey, unionId
-                  var p2 = new Promise((resolve, reject) => {
-                    wx.request({
-                        url: 'http://localhost:8888/accounting-system/user/login',
-                        method: 'GET',
-                        data: {
-                          code: app.globalData.currentCode
-                        },
-                        success: (res) => {
-                            app.globalData.openid = res.data.openid
-                            resolve(res)
-                        },
-                        fail:(err) => {
-                            reject(err)
-                        }
-                      })
-                  })
+                  
 
-                  Promise.all([p1, p2]).then(values => {
-                    console.log(app.globalData)
+                  Promise.resolve().then(function() {
+                      return p1
+                  }).then(function(value) {
+                    console.log(value)
+                    // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                    return new Promise((resolve, reject) => {
+                      wx.request({
+                          url: 'http://localhost:8888/accounting-system/user/login',
+                          method: 'GET',
+                          data: {
+                            code: app.globalData.currentCode,
+                            nickName: value.userInfo.nickName
+                          },
+                          success: (res) => {
+                              app.globalData.openid = res.data.openid
+                              resolve(res)
+                          },
+                          fail:(err) => {
+                              reject(err)
+                          }
+                        })
+                    })
+                  })
+                  .then(function(value) {
                     wx.switchTab({
                         url: '/pages/detail/detail'
                     });

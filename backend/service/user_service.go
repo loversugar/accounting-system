@@ -1,26 +1,29 @@
 package service
 
 import (
+	"accounting/datamodals"
 	"accounting/repository"
 	"encoding/json"
+	"fmt"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type IUserService interface {
-	Login(code string) (string, error)
+	Login(code, nickName string) (string, error)
 }
 
 func NewUserService() IUserService {
-	return &UserService{}
+	return &UserService{userRepo:repository.NewUserRepository()}
 }
 
 type UserService struct {
-	userRepo *repository.UserRepository
+	userRepo repository.IUserRepository
 }
 
-func (u UserService) Login(code string) (string, error) {
+func (u UserService) Login(code, nickName string) (string, error) {
 	body, err := getOpenidByCode(code)
 	if err != nil {
 		return "", err
@@ -30,10 +33,11 @@ func (u UserService) Login(code string) (string, error) {
 	if err = json.Unmarshal(body, &data); err != nil {
 
 	}
+	fmt.Println(data["openid"])
 	user := u.userRepo.GetUserByOpenid(data["openid"])
 	if user == nil {
-		// TODO
-		//u.userRepo.InsertUser(&datamodals.User{OpenId:data["openid"], })
+		u.userRepo.InsertUser(
+			&datamodals.User{OpenId:data["openid"], UserName:nickName, CreateTime:time.Now()})
 	}
 
 	return string(body[:]), nil
