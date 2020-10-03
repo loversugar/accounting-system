@@ -7,6 +7,9 @@ func Routes(router *gin.Engine)  {
 	userApi := v1.Group("user")
 	{
 		userApi.GET("login", login)
-		userApi.POST("register", register)
+	}
+	billApi := v1.Group("bill")
+	{
+		billApi.POST("addBill", addBill)
 	}
 }

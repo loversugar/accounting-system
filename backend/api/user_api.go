@@ -14,12 +14,8 @@ func login(context *gin.Context)  {
 	userService := service.NewUserService()
 	body, err := userService.Login(code, nickName)
 	if err != nil {
-
+		logrus.Error(err)
 	}
 
 	context.Writer.Write([]byte(body))
-}
-
-func register(context *gin.Context)  {
-
 }

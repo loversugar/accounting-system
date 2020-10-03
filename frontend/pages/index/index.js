@@ -43,6 +43,8 @@ Page({
                           },
                           success: (res) => {
                               app.globalData.openid = res.data.openid
+                              app.globalData.userId = res.data.userId
+                              console.log(app.globalData)
                               resolve(res)
                           },
                           fail:(err) => {

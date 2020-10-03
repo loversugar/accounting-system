@@ -8,7 +8,7 @@ import (
 )
 
 type IUserRepository interface {
-	InsertUser(user *datamodals.User) error
+	InsertUser(user *datamodals.User) (*datamodals.User, error)
 	GetUserByOpenid(openid string) *datamodals.User
 }
 
@@ -33,10 +33,10 @@ func (u UserRepository) GetUserByOpenid(openid string) (user *datamodals.User) {
 	return user
 }
 
-func (u UserRepository) InsertUser(user *datamodals.User) error {
+func (u UserRepository) InsertUser(user *datamodals.User) (*datamodals.User, error) {
 	if err := u.db.Create(user).Error; err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return user, nil
 }
 

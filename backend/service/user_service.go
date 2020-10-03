@@ -4,10 +4,10 @@ import (
 	"accounting/datamodals"
 	"accounting/repository"
 	"encoding/json"
-	"fmt"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -31,16 +31,21 @@ func (u UserService) Login(code, nickName string) (string, error) {
 
 	var data map[string]string
 	if err = json.Unmarshal(body, &data); err != nil {
-
+		return "", err
 	}
-	fmt.Println(data["openid"])
 	user := u.userRepo.GetUserByOpenid(data["openid"])
 	if user == nil {
-		u.userRepo.InsertUser(
+		user, err = u.userRepo.InsertUser(
 			&datamodals.User{OpenId:data["openid"], UserName:nickName, CreateTime:time.Now()})
+		if err != nil {
+			return "", err
+		}
 	}
+	data["userId"] = strconv.Itoa(user.ID)
+	dataType, _ := json.Marshal(data)
+	dataString := string(dataType)
 
-	return string(body[:]), nil
+	return dataString, nil
 }
 
 func getOpenidByCode(code string) ([]byte, error) {
