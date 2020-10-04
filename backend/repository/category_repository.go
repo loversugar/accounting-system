@@ -9,6 +9,8 @@ import (
 
 type ICategoryRepository interface {
 	InsertCategory(category *datamodals.Category) error
+
+	SelectCategoryById(id int) *datamodals.Category
 }
 
 func NewCategoryRepository() ICategoryRepository {
@@ -21,6 +23,12 @@ func NewCategoryRepository() ICategoryRepository {
 
 type CategoryRepository struct {
 	db *gorm.DB
+}
+
+func (c CategoryRepository) SelectCategoryById(id int) *datamodals.Category {
+	var category datamodals.Category
+	c.db.Where("id = ?", id).First(&category)
+	return &category
 }
 
 func (c CategoryRepository) InsertCategory(category *datamodals.Category) error {

@@ -4,7 +4,7 @@ import "time"
 
 type Bill struct {
 	ID int
-	userId string `gorm:"column:user_id"`
+	UserId string `gorm:"column:user_id"`
 	Consumption float32 `gorm:"column:consumption"`
 	CreateTime time.Time `gorm:"column:create_time"`
 }

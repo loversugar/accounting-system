@@ -8,7 +8,7 @@ import (
 )
 
 type IBillRepository interface {
-	InsertBill(bill *datamodals.Bill, categoryId int) error
+	InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error
 }
 
 func NewBillRepository() IBillRepository {
@@ -24,13 +24,15 @@ type BillRepository struct {
 	db *gorm.DB
 }
 
-func (b BillRepository) InsertBill(bill *datamodals.Bill, categoryId int) error {
+func (b BillRepository) InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error {
 	return b.db.Transaction(func(tx *gorm.DB) error {
 		if err := tx.Create(&bill).Error; err != nil {
 			return err
 		}
 
-		if err := tx.Create(&datamodals.BillCategory{BillID:bill.ID, CategoryID:categoryId}).Error; err != nil {
+		category.BillID = bill.ID
+
+		if err := tx.Create(&category).Error; err != nil {
 			return err
 		}
 
