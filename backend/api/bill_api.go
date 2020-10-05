@@ -15,5 +15,18 @@ func addBill(ctx *gin.Context) {
 	var bill Bill
 	ctx.BindJSON(&bill)
 	billService := service.NewBillService()
-	billService.AddBill(&bill)
+	err := billService.AddBill(&bill)
+	if err != nil {
+		ctx.JSON(err.Code, gin.H{
+			"code": err.Code,
+			"message": err.Message,
+			"data": err.Data,
+		})
+	} else {
+		ctx.JSON(200, gin.H{
+			"code": 200,
+			"message": nil,
+			"data": nil,
+		})
+	}
 }
