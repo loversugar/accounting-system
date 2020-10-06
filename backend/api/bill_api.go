@@ -3,6 +3,7 @@ package api
 import (
 	"accounting/service"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 type Bill struct {
@@ -29,4 +30,18 @@ func addBill(ctx *gin.Context) {
 			"data": nil,
 		})
 	}
+}
+
+func getBillByMonth(ctx *gin.Context) {
+	userId, err := strconv.Atoi(ctx.Query("userId"))
+	if err != nil {
+
+	}
+	month, err := strconv.Atoi(ctx.Query("month"))
+	if err != nil {
+
+	}
+
+	billService := service.NewBillService()
+	billService.GetBillByMonth(userId, month)
 }

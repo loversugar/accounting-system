@@ -11,6 +11,7 @@ import (
 
 type IBillService interface {
 	AddBill(bill *api.Bill) *exception.ApiException
+	GetBillByMonth(userId int, month int)
 }
 
 func NewBillService() IBillService {
@@ -20,6 +21,10 @@ func NewBillService() IBillService {
 type BillService struct {
 	billRepository repository.IBillRepository
 	categoryRepository repository.ICategoryRepository
+}
+
+func (b BillService) GetBillByMonth(userId int, month int) {
+	panic("implement me")
 }
 
 func (b BillService) AddBill(bill *api.Bill) *exception.ApiException {
@@ -35,5 +40,7 @@ func (b BillService) AddBill(bill *api.Bill) *exception.ApiException {
 		CategoryID:bill.CategoryId, CategoryName:category.CategoryName, CategoryUrl:category.CategoryUrl}
 
 	b.billRepository.InsertBill(innerBill, billCategory)
+
+	return nil
 }
 
