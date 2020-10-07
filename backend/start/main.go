@@ -2,8 +2,10 @@ package main
 
 import (
 	"accounting/api"
+	"accounting/middleware"
 	"github.com/gin-gonic/gin"
 )
+
 
 func main()  {
 	router := gin.Default()
@@ -13,6 +15,8 @@ func main()  {
 	})
 
 	api.Routes(router)
+
+	router.Use(middleware.Logger())
 
 	router.Run(":8888")
 
