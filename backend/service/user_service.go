@@ -49,7 +49,7 @@ func (u UserService) Login(code, nickName string) (string, error) {
 }
 
 func getOpenidByCode(code string) ([]byte, error) {
-	url := "https://api.weixin.qq.com/sns/jscode2session?appid=&secret="
+	url := "https://api.weixin.qq.com/sns/jscode2session?appid=wx10ce95ecd4642a6b&secret=7bd9ffe3049cd21632b3fdec8bd59e45"
 	url += "&js_code="+code+"&grant_type=authorization_code"
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)

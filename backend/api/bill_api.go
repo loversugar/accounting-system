@@ -1,13 +1,15 @@
 package api
 
 import (
+	"accounting/datamodals"
 	"accounting/service"
 	"github.com/gin-gonic/gin"
 	"strconv"
+	"time"
 )
 
 type Bill struct {
-	UserId string `json:"userId" form:"user_id"`
+	UserId string `json:"userId" form:"userId"`
 	Consumption float32 `json:"consumption" form:"consumption"`
 	CategoryId int `json:"categoryId" form:"categoryId`
 }
@@ -15,8 +17,12 @@ type Bill struct {
 func addBill(ctx *gin.Context) {
 	var bill Bill
 	ctx.BindJSON(&bill)
+
 	billService := service.NewBillService()
-	err := billService.AddBill(&bill)
+
+	innerBill := &datamodals.Bill{Consumption:bill.Consumption, UserId:bill.UserId, CreateTime:time.Now()}
+
+	err := billService.AddBill(innerBill, bill.CategoryId)
 	if err != nil {
 		ctx.JSON(err.Code, gin.H{
 			"code": err.Code,

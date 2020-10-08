@@ -1,4 +1,6 @@
 const systemInfo = wx.getSystemInfoSync();
+const app = getApp();
+
 
 Component({
   data: {
@@ -70,6 +72,29 @@ Component({
   properties: {},
   methods: {
     click(e) {
+      if (e.target.dataset.item.number === '完成') {
+        wx.showLoading({
+          title: "发送中...",
+          mask: true,
+        });
+        wx.request({
+          url: 'http://localhost:8888/accounting-system/bill/addBill',
+          data: {
+            userId: app.globalData.userId,
+            consumption: 9,
+            categoryId: 1, 
+          },
+          header: {'content-type':'application/json'},
+          method: 'post',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result)=>{
+            wx.hideLoading();    
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+      }
 
       if (this.data.money === "0.00") {
         this.setData({
