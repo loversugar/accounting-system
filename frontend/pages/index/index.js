@@ -16,7 +16,6 @@ Page({
                   var p1 = new Promise((resolve, reject) => 
                     wx.getUserInfo({
                       success: function(res) {
-                        console.log(res)        
                         app.globalData.userInfo = res.userInfo
                         
                         resolve(res)
@@ -26,12 +25,10 @@ Page({
                       }
                     })
                   );
-                  
 
                   Promise.resolve().then(function() {
                       return p1
                   }).then(function(value) {
-                    console.log(value)
                     // 发送 res.code 到后台换取 openId, sessionKey, unionId
                     return new Promise((resolve, reject) => {
                       wx.request({
@@ -44,7 +41,6 @@ Page({
                           success: (res) => {
                               app.globalData.openid = res.data.openid
                               app.globalData.userId = res.data.userId
-                              console.log(app.globalData)
                               resolve(res)
                           },
                           fail:(err) => {

@@ -20,6 +20,7 @@
 </scroll-view>
 
 <custom-board
+ category-id="{{categoryId}}"
  class="custom-board"
  wx:if="{{isShowKeyboard}}"
 />

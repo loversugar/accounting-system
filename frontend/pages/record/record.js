@@ -13,6 +13,7 @@ Page({
     prePageUrl: String,
     tagWidth: Number,
     isShowKeyboard: false,
+    categoryId: Number,
     tags: [
       {
         id: 1,
@@ -46,8 +47,12 @@ Page({
     })
   },
   click(e) {
-    var dataArray = [];
     let selectedItemId = e.target.dataset.item.id
+    if (currentSelectedKeyId === selectedItemId) {
+      return
+    }
+    currentSelectedKeyId = selectedItemId;
+    var dataArray = [];
     for (let i=0; i<this.data.tags.length; i++) {
       let currentTag = this.data.tags[i]
       if (selectedItemId == currentTag.id) {
@@ -57,19 +62,13 @@ Page({
       }
       dataArray = dataArray.concat(currentTag)
     }
-    this.setData({
-      tags: dataArray
-    })
 
     this.onClickOne(e)
 
-    // 弹出键盘
-    if (currentSelectedKeyId === selectedItemId) {
-      return
-    }
-
     this.setData({
-      isShowKeyboard: true
+      categoryId: selectedItemId,
+      isShowKeyboard: true,
+      tags: dataArray
     })
   },
 
@@ -82,6 +81,30 @@ Page({
         this.data.tags[i].isClick = false
       }
     }
+  },
+
+  sendBill() {
+    wx.showLoading({
+      title: "发送中...",
+      mask: true,
+    });
+    wx.request({
+      url: 'http://localhost:8888/accounting-system/bill/addBill',
+      data: {
+        userId: app.globalData.userId,
+        consumption: 9,
+        categoryId: 1, 
+      },
+      header: {'content-type':'application/json'},
+      method: 'post',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        wx.hideLoading();    
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**

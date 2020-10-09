@@ -11,6 +11,7 @@ create table bill (
     user_id int(10) not null,
     username varchar(255),
     consumption decimal(6, 2),
+    note varchar(255),
     create_time timestamp
 )
 
