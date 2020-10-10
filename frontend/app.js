@@ -25,6 +25,7 @@ App({
     userInfo: null,
     preTabUrl: null,
     openid: null,
-    userId: null
+    userId: null,
+    remoteAddress: "http://localhost:8888/accounting-system"
   }
 })

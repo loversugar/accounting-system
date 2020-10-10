@@ -89,7 +89,7 @@ Page({
       mask: true,
     });
     wx.request({
-      url: 'http://localhost:8888/accounting-system/bill/addBill',
+      url: app.globalData.remoteAddress + '/bill/addBill',
       data: {
         userId: app.globalData.userId,
         consumption: 9,
@@ -101,6 +101,22 @@ Page({
       responseType: 'text',
       success: (result)=>{
         wx.hideLoading();    
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+
+  getCategories() {
+    wx.request({
+      url: 'http://localhost:8888/accounting-system/bill',
+      data: {},
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        
       },
       fail: ()=>{},
       complete: ()=>{}
