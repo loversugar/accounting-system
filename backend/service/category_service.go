@@ -6,7 +6,7 @@ import (
 )
 
 type ICategoryService interface {
-	getCategories(userId int) []*datamodals.Category
+	GetCategories(userId int) []*datamodals.Category
 }
 
 func NewCategoryService() ICategoryService {
@@ -17,7 +17,6 @@ type CategoryService struct {
 	repository repository.ICategoryRepository
 }
 
-func (c CategoryService) getCategories(userId int) []*datamodals.Category {
-
+func (c CategoryService) GetCategories(userId int) []*datamodals.Category {
+	return c.repository.GetCategoriesByUserId(userId)
 }
-

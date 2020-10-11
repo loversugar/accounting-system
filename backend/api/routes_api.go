@@ -1,8 +1,16 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"accounting/service"
+	"github.com/gin-gonic/gin"
+)
 
+var userService service.IUserService
+var categoryService service.ICategoryService
 func Routes(router *gin.Engine)  {
+	userService = service.NewUserService()
+	categoryService = service.NewCategoryService()
+
 	v1 := router.Group("accounting-system")
 	userApi := v1.Group("user")
 	{
@@ -12,5 +20,9 @@ func Routes(router *gin.Engine)  {
 	{
 		billApi.POST("addBill", addBill)
 		billApi.GET("getBillByMonth", getBillByMonth)
+	}
+	categoryApi := v1.Group("category")
+	{
+		categoryApi.GET("getCategories", getCategories)
 	}
 }

@@ -109,7 +109,7 @@ Page({
 
   getCategories() {
     wx.request({
-      url: 'http://localhost:8888/accounting-system/bill',
+      url: app.globalData.remoteAddress + "/",
       data: {},
       header: {'content-type':'application/json'},
       method: 'GET',
