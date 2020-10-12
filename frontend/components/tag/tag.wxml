@@ -4,8 +4,8 @@
 >
 	<i
 	 style="font-size:30px;background-color:{{tag.iconfontBackgroundColor ? tag.iconfontBackgroundColor : '#f1f1f1'}}"
-	 class="iconfont {{tag.iconfontName}} small-tag"
+	 class="iconfont {{tag.categoryUrl}} small-tag"
 	/>
-	<text class="item-name">{{tag.name}}</text>
+	<text class="item-name">{{tag.categoryName}}</text>
 </view>
 

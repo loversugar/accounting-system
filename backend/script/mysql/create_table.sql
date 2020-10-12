@@ -4,7 +4,7 @@ create table user
     openid    varchar(100) not null unique,
     username  varchar(255),
     create_time timestamp
-)
+);
 
 create table bill (
     id int(10) not null primary key auto_increment unique,
@@ -13,7 +13,7 @@ create table bill (
     consumption decimal(6, 2),
     note varchar(255),
     create_time timestamp
-)
+);
 
 create table bill_category (
     bill_id int not null,
@@ -21,7 +21,7 @@ create table bill_category (
     category_name varchar(100) not null,
     category_url varchar(255),
     primary key (bill_id, category_id)
-)
+);
 
 create table category (
     id int not null primary key auto_increment unique,
@@ -30,4 +30,4 @@ create table category (
     user_id int null,
     is_private tinyint(1),
     deleted tinyint(1)
-)
+);

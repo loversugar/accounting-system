@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm/schema"
 )
 
-const DSN = "root:root@tcp(127.0.0.1)/AccountingSystem?charset=utf8&parseTime&loc=Local"
+const DSN = "root:root@tcp(127.0.0.1)/AccountingSystem?charset=utf8&parseTime=true&loc=Local"
 
 func Connection() (db *gorm.DB, err error) {
 	return gorm.Open(mysql.New(mysql.Config{

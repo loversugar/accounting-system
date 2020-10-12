@@ -42,6 +42,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getCategories()
     this.setData({
       tagWidth: (systemInfo.screenWidth - 100) / 4
     })
@@ -109,14 +110,17 @@ Page({
 
   getCategories() {
     wx.request({
-      url: app.globalData.remoteAddress + "/",
+      url: app.globalData.remoteAddress + "/category/getCategories",
       data: {},
       header: {'content-type':'application/json'},
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
       success: (result)=>{
-        
+        this.setData({
+          tags: result.data
+        })
+        console.log(result.data)
       },
       fail: ()=>{},
       complete: ()=>{}

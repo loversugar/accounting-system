@@ -18,10 +18,10 @@ type BillCategory struct {
 }
 
 type Category struct {
-	ID int
-	CategoryName string `gorm:"column:category_name"`
-	CategoryUrl string `gorm:"column:category_url"`
-	UserId int `gorm:"column:user_id"'`
-	IsPrivate bool `gorm:"column:is_private"`
-	Deleted bool `gorm:"column:deleted"`
+	ID int `json:"id"`
+	CategoryName string `json:"categoryName" gorm:"column:category_name"`
+	CategoryUrl string `json:"categoryUrl" gorm:"column:category_url"`
+	UserId int `json:"userId" gorm:"column:user_id"'`
+	IsPrivate bool `json:"-" gorm:"column:is_private"`
+	Deleted bool `json:"-" gorm:"column:deleted"`
 }

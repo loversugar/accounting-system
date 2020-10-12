@@ -19,8 +19,6 @@ func addBill(ctx *gin.Context) {
 	var bill Bill
 	ctx.BindJSON(&bill)
 
-	billService := service.NewBillService()
-
 	innerBill := &datamodals.Bill{
 		Consumption:bill.Consumption, Note:bill.Note,
 		UserId:bill.UserId, CreateTime:time.Now()}

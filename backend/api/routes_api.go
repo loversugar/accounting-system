@@ -7,9 +7,12 @@ import (
 
 var userService service.IUserService
 var categoryService service.ICategoryService
+var billService service.IBillService
+
 func Routes(router *gin.Engine)  {
 	userService = service.NewUserService()
 	categoryService = service.NewCategoryService()
+	billService = service.NewBillService()
 
 	v1 := router.Group("accounting-system")
 	userApi := v1.Group("user")
