@@ -7,6 +7,7 @@ type Bill struct {
 	UserId string `gorm:"column:user_id"`
 	Consumption float32 `gorm:"column:consumption"`
 	Note string `gorm:"column:note"`
+	SelectedTime time.Time `gorm:"column:selected_time"`
 	CreateTime time.Time `gorm:"column:create_time"`
 }
 

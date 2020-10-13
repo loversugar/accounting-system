@@ -12,7 +12,8 @@ create table bill (
     username varchar(255),
     consumption decimal(6, 2),
     note varchar(255),
-    create_time timestamp
+    selected_time timestamp not null,
+    create_time timestamp not null
 );
 
 create table bill_category (

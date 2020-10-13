@@ -12,6 +12,7 @@ type Bill struct {
 	UserId string `json:"userId" form:"userId"`
 	Consumption float32 `json:"consumption" form:"consumption"`
 	Note string `json:"note" form:"note"`
+	SelectedTime time.Time `json:"selectedTime" form:"selectedTime"`
 	CategoryId int `json:"categoryId" form:"categoryId`
 }
 
@@ -21,7 +22,7 @@ func addBill(ctx *gin.Context) {
 
 	innerBill := &datamodals.Bill{
 		Consumption:bill.Consumption, Note:bill.Note,
-		UserId:bill.UserId, CreateTime:time.Now()}
+		UserId:bill.UserId, SelectedTime:bill.SelectedTime, CreateTime:time.Now()}
 
 	err := billService.AddBill(innerBill, bill.CategoryId)
 	if err != nil {
