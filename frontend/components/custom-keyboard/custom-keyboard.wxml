@@ -1,34 +1,42 @@
 <view class="keyboard">
-	<view class="top-input">
-		<text class="iconfont icon-beizhuyitianxie"/>
+	<view wx:if="{{!isCalendarShow}}">
+		<view class="top-input">
+			<text class="iconfont icon-beizhuyitianxie"/>
 
 
-		<input
-		 class="note"
-		 placeholder="点击写备注..."
-		>{{note}}
-		</input>
-		<input
-		 class="money"
-		 disabled="true"
-		 value="{{money}}"
-		/>
-	</view>
-	<view
-	 style="grid-auto-columns: minmax({{keyWidth}}px, auto);grid-auto-rows: minmax({{keyHeight}}px, auto)"
-	 class="board"
-	>
-		<block
-		 wx:key="index"
-		 wx:for="{{boardKeys}}"
+			<input
+			 class="note"
+			 placeholder="点击写备注..."
+			 value="{{note}}"
+			/>
+			<input
+			 class="money"
+			 disabled="true"
+			 value="{{money}}"
+			/>
+		</view>
+
+		<view
+		 style="grid-auto-columns: minmax({{keyWidth}}px, auto);grid-auto-rows: minmax({{keyHeight}}px, auto)"
+		 class="board"
 		>
-			<view
-			 class="key-content"
-			 bind:tap="click"
-			 data-item="{{item}}"
-			>{{item.number}}
-			</view>
-		</block>
+			<block
+			 wx:key="index"
+			 wx:for="{{boardKeys}}"
+			>
+				<view
+				 class="key-content"
+				 bind:tap="click"
+				 data-item="{{item}}"
+				>{{item.display}}
+				</view>
+			</block>
+		</view>
 	</view>
+
+	<calendar
+	 wx:if="{{isCalendarShow}}"
+	 bind:dayClick="dayClick"
+	/>
 </view>
 

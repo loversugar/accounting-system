@@ -20,6 +20,9 @@
 ***
 > div中让内容文字居中，1. 知道高度的情况下使用 text-align:center 水平居中，padding: 50px 20px垂直居中(高度不固定的情况下)  
 > padding设置如果长度没有达到，内容回自动居中 2.使用display:flex justify-content: center; align-items: center;
+### 遇到的问题
+>observer导致内存溢出,observer函数是在data发生改变时小程序主动调用的，在observer函数内setData时又再次改变了properties的值，observer函数再次调用，不停的循环……无限递归调用……于是内存耗尽。
+>解决方案是：observe是内部改变properties的内部数据产生问题，那边就不该改变，在Data中重新定义一个新的值
 ### 小程序问题
 >自定义顶部导航栏，与原生顶部导航栏字体样式在微信开发者工具中，显示一致，但是在真机环境下不一致。
 > 如font-weight

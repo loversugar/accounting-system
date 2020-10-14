@@ -14,28 +14,7 @@ Page({
     tagWidth: Number,
     isShowKeyboard: false,
     categoryId: Number,
-    tags: [
-      {
-        id: 1,
-        name: "蔬菜",
-        iconfontName: "icon-chongwu"
-      },
-      {
-        id: 2,
-        name: "水果",
-        iconfontName: "icon-shucai"
-      },
-      {
-        id: 3,
-        name :"交通",
-        iconfontName: "icon-jiaotong"
-      },
-      {
-        id: 4,
-        name : "宠物",
-        iconfontName: "icon-shuiguo"
-      }
-    ]
+    tags: []
   },
 
   /**
@@ -84,28 +63,29 @@ Page({
     }
   },
 
-  sendBill() {
-    wx.showLoading({
-      title: "发送中...",
-      mask: true,
-    });
-    wx.request({
-      url: app.globalData.remoteAddress + '/bill/addBill',
-      data: {
-        userId: app.globalData.userId,
-        consumption: 9,
-        categoryId: 1, 
-      },
-      header: {'content-type':'application/json'},
-      method: 'post',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
-        wx.hideLoading();    
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+  sendBill(e) {
+    console.log(e)
+    // wx.showLoading({
+    //   title: "发送中...",
+    //   mask: true,
+    // });
+    // wx.request({
+    //   url: app.globalData.remoteAddress + '/bill/addBill',
+    //   data: {
+    //     userId: app.globalData.userId,
+    //     consumption: 9,
+    //     categoryId: 1, 
+    //   },
+    //   header: {'content-type':'application/json'},
+    //   method: 'post',
+    //   dataType: 'json',
+    //   responseType: 'text',
+    //   success: (result)=>{
+    //     wx.hideLoading();    
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // });
   },
 
   getCategories() {
