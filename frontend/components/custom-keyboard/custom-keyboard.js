@@ -19,14 +19,17 @@ Component({
       {
         id: 1,
         display: "7",
+        number: "7",
       },
       {
         id: 2,
-        display: "8"
+        display: "8",
+        number: "8"
       },
       {
         id: 3,
-        display: "9"
+        display: "9",
+        number: "9"
       },
       {
         id: 4,
@@ -35,15 +38,18 @@ Component({
       },
       {
         id: 5,
-        display: "4"
+        display: "4",
+        number: "4",
       },
       {
         id: 6,
-        display: "5"
+        display: "5",
+        number: "5"
       },
       {
         id: 7,
-        display: "6"
+        display: "6",
+        number: "6"
       },
       {
         id: 8,
@@ -51,15 +57,18 @@ Component({
       },
       {
         id: 9,
-        display: "1"
+        display: "1",
+        number: "1"
       },
       {
         id: 10,
-        display: "2"
+        display: "2",
+        number: "2"
       },
       {
         id: 11,
-        display: "3"
+        display: "3",
+        number: "3"
       },
       {
         id: 12,
@@ -71,7 +80,8 @@ Component({
       },
       {
         id: 14,
-        display: "0"
+        display: "0",
+        number: "0"
       },
       {
         id: 15,
@@ -115,9 +125,41 @@ Component({
       })
     },
     click(e) {
+      var dataMoney = this.data.money
+      var inputDisplayName = e.target.dataset.item.display;
+      if (dataMoney.includes("+") && dataMoney.split("+").length > 1) {
+        var dataMoneySplit = dataMoney.split("+")
+        if ((dataMoneySplit[1] != "" && inputDisplayName === "+") 
+              || (dataMoneySplit[1] != "" && inputDisplayName === '-') 
+              || (dataMoneySplit[1] != "" && inputDisplayName === '=')) {
+          this.setData({
+            money: parseFloat(dataMoneySplit[0]) + parseFloat(dataMoneySplit[1]) + ""
+          })
+        }
+      }
+
+      if (dataMoney.includes("-") && dataMoney.split("-").length > 1) {
+        var dataMoneySplit = dataMoney.split("-")
+        if ((dataMoneySplit[1] != "" && inputDisplayName === "+") 
+              || (dataMoneySplit[1] != "" && inputDisplayName === '-') 
+              || (dataMoneySplit[1] != "" && inputDisplayName === '=')) {
+          this.setData({
+            money: parseFloat(dataMoneySplit[0]) - parseFloat(dataMoneySplit[1]) + ""
+          })
+        }
+      }
+
       if (e.target.dataset.item.name === 'calendar') {
         this.setData({
           isCalendarShow: true,
+        })
+        return
+      }
+
+      if(e.target.dataset.item.display === "删除") {
+        this.setData({
+          money: this.data.money.slice(0, this.data.money.length - 1).length > 0? 
+            this.data.money.slice(0, this.data.money.length - 1) : "0.00"
         })
         return
       }
@@ -129,12 +171,42 @@ Component({
 
       if (this.data.money === "0.00") {
         this.setData({
-          money: e.target.dataset.item.number
+          money: e.target.dataset.item.display
         })
       } else {
-        this.setData({
-          money: this.data.money + e.target.dataset.item.number
-        })
+        if (e.target.dataset.item.display != '=') {
+          this.setData({
+            money: this.data.money + e.target.dataset.item.display
+          })
+        }
+      }
+
+      dataMoney = this.data.money
+      var tempStr = 'boardKeys[15].display'
+      if (dataMoney.includes("+")) {
+        var dataMoneySplit = dataMoney.split("+")
+        if (dataMoneySplit[1] != 0) {
+          this.setData({
+            [tempStr]: "="
+          })
+        } else {
+          this.setData({
+            [tempStr]: "完成"
+          })
+        }
+      }
+
+      if (dataMoney.includes("-")) {
+       var dataMoneySplit = dataMoney.split("-")
+        if (dataMoneySplit[1] != 0) {
+          this.setData({
+            [tempStr]: "="
+          })
+        } else {
+          this.setData({
+            [tempStr]: "完成"
+          })
+        }
       }
     },
 
