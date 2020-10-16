@@ -99,10 +99,8 @@ Component({
       let screenHeight = systemInfo.screenHeight;
       this.setData({
         keyWidth: screenWidth / 4,
-        keyHeight: ((screenHeight * 0.4) - 35) / 4
-      })
-
-      this.setData({
+        keyHeight: ((screenHeight * 0.4) - 35) / 4,
+        selectedTime: new Date(),
         innerCategoryId: this.data.categoryId
       })
     },
@@ -121,7 +119,9 @@ Component({
         innerCategoryId: categoryId,
         money: "0.00",
         note: "",
-        isCalendarShow: false
+        isCalendarShow: false,
+        selectedTime: new Date(),
+        // 'boardKeys[3].display': util.formatTime(new Date()).split(" ")[0]
       })
     },
     click(e) {
