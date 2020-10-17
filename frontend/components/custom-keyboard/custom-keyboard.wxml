@@ -3,10 +3,11 @@
 		<view class="top-input">
 			<text class="iconfont icon-beizhuyitianxie"/>
 
-
 			<input
 			 class="note"
 			 placeholder="点击写备注..."
+			 bind:input="inputEdit"
+			 data-name="note"
 			 value="{{note}}"
 			/>
 			<input

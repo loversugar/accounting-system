@@ -160,5 +160,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  doSendBill: function(event) {
+    console.log(event)
   }
 })

@@ -164,8 +164,7 @@ Component({
         return
       }
       if (e.target.dataset.item.display === '完成') {
-        console.log(this.data.selectedTime)
-        // this.finish()
+        this.finish()
         return
       }
 
@@ -220,14 +219,34 @@ Component({
       })
     },
 
+    inputEdit(e) {
+      let _this = this;
+      let dataset = e.currentTarget.dataset
+      let value = e.detail.value
+      let name = dataset.name
+      _this.data[name] = value
+      _this.setData({
+        name: _this.data[name]
+      })
+    },
+
     finish() {
-      console.log(this.data.selectedTime)
-      // this.triggerEvent("doSendBill", {
-      //   categoryId: this.data.categoryId,
-      //   selectedTime: "",
-      //   consumption: this.data.consumption,
-      //   note: this.data.note
-      // })
+      var dataMoney = this.data.money
+      var consumption = "";
+      if (dataMoney.includes("+")) {
+        consumption = dataMoney.split("+")[0]
+      } else if (dataMoney.includes("-")) {
+        consumption = dataMoney.split("-")[0]
+      } else {
+        consumption = dataMoney
+      }
+      console.log(this.data.note)
+      this.triggerEvent("sendBill", {
+        categoryId: this.data.categoryId,
+        selectedTime: this.data.selectedTime,
+        consumption: parseFloat(consumption),
+        note: this.data.note
+      })
     }
   }
 })
