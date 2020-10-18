@@ -63,30 +63,7 @@ Page({
     }
   },
 
-  sendBill(e) {
-    console.log(e)
-    // wx.showLoading({
-    //   title: "发送中...",
-    //   mask: true,
-    // });
-    // wx.request({
-    //   url: app.globalData.remoteAddress + '/bill/addBill',
-    //   data: {
-    //     userId: app.globalData.userId,
-    //     consumption: 9,
-    //     categoryId: 1, 
-    //   },
-    //   header: {'content-type':'application/json'},
-    //   method: 'post',
-    //   dataType: 'json',
-    //   responseType: 'text',
-    //   success: (result)=>{
-    //     wx.hideLoading();    
-    //   },
-    //   fail: ()=>{},
-    //   complete: ()=>{}
-    // });
-  },
+  
 
   getCategories() {
     wx.request({
@@ -163,6 +140,26 @@ Page({
   },
 
   doSendBill: function(event) {
-    console.log(event)
-  }
+    console.log(event.detail)
+    wx.showLoading({
+      title: "发送中...",
+      mask: true,
+    });
+    wx.request({
+      url: app.globalData.remoteAddress + '/bill/addBill',
+      data: event.detail,
+      header: {'content-type':'application/json'},
+      method: 'post',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        wx.hideLoading();    
+        wx.switchTab({
+          url: '../detail/detail',
+        });
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
 })

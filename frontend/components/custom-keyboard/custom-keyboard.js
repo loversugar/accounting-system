@@ -240,12 +240,12 @@ Component({
       } else {
         consumption = dataMoney
       }
-      console.log(this.data.note)
       this.triggerEvent("sendBill", {
         categoryId: this.data.categoryId,
         selectedTime: this.data.selectedTime,
         consumption: parseFloat(consumption),
-        note: this.data.note
+        note: this.data.note,
+        userId: app.globalData.userId
       })
     }
   }
