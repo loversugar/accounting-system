@@ -1,2 +1,13 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view>
+	<view class="side-cell">
+		<view class="cell">
+			<view class="title">2020年</view>
+			<view class="item">10月</view>
+		</view>
+		<view class="spending">
+			<view class="title">支出</view>
+			<view class="item">1000元</view>
+		</view>
+	</view>
+</view>
+

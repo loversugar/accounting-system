@@ -1,1 +1,28 @@
-/* pages/detail/detail.wxss */
+.side-cell {
+    width: 100%;
+    height: 50px;
+    background-color: #00b38a;
+    position: fixed;
+    top: 0%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    flex: 1;
+    margin-left: 20px;
+}
+
+view .title {
+    font-size: 10px;
+    color: #ddece9;
+}
+
+view .item {
+    font-size: 20px;
+}
+
+.spending {
+    flex: 1;
+}
+
