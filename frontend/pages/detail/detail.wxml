@@ -1,8 +1,21 @@
 <view>
 	<view class="side-cell">
-		<view class="cell">
-			<view class="title">2020年</view>
-			<view class="item">10月</view>
+		<view
+		 class="cell"
+		 bind:tap="selectDate"
+		>
+			<picker
+			 mode="date"
+			 fields="month"
+			 value="{{date}}"
+			 bindchange="getDateTime"
+			>
+				<view class="selectDate">
+					<view class="title">{{year}}年</view>
+					<view class="item">{{month}}月</view>
+					<!-- {{years}}年{{months}}月 -->
+				</view>
+			</picker>
 		</view>
 		<view class="spending">
 			<view class="title">支出</view>
@@ -10,4 +23,20 @@
 		</view>
 	</view>
 </view>
+
+<!-- <view class="commodity_screen" />
+<view class="commodity_attr_box">
+	<picker
+	 mode="date"
+	 fields="month"
+	 value="{{date}}"
+	 start="2016-01-01"
+	 end="2020-12-31"
+	 bindchange="getDateTime"
+	>
+		<view class="selectDate">
+			{{years}}年{{months}}月
+		</view>
+	</picker>
+</view> -->
 

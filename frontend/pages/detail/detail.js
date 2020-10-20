@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    date: new Date,
+    year: "2020",
+    month: "10",
   },
 
   /**
@@ -22,6 +24,21 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  selectDate: function() {
+    console.log("selectDate")
+  },
+
+  getDateTime: function(e) {
+    if (e.detail.value) {
+      console.log(e)
+      var dataArray = e.detail.value.split('-')
+      this.setData({
+        year: dataArray[0],
+        month: dataArray[1]
+      })
+    }
   },
 
   /**

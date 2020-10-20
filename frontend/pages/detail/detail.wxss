@@ -25,4 +25,3 @@ view .item {
 .spending {
     flex: 1;
 }
-
