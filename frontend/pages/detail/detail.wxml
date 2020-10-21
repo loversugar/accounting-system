@@ -7,13 +7,11 @@
 			<picker
 			 mode="date"
 			 fields="month"
-			 value="{{date}}"
 			 bindchange="getDateTime"
 			>
 				<view class="selectDate">
 					<view class="title">{{year}}年</view>
 					<view class="item">{{month}}月</view>
-					<!-- {{years}}年{{months}}月 -->
 				</view>
 			</picker>
 		</view>
@@ -23,20 +21,4 @@
 		</view>
 	</view>
 </view>
-
-<!-- <view class="commodity_screen" />
-<view class="commodity_attr_box">
-	<picker
-	 mode="date"
-	 fields="month"
-	 value="{{date}}"
-	 start="2016-01-01"
-	 end="2020-12-31"
-	 bindchange="getDateTime"
-	>
-		<view class="selectDate">
-			{{years}}年{{months}}月
-		</view>
-	</picker>
-</view> -->
 

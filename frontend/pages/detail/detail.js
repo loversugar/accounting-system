@@ -1,15 +1,16 @@
 // pages/detail/detail.js
+const util = require('../../utils/util.js')
+			 
 const app  =  getApp();
-
+			 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: new Date,
-    year: "2020",
-    month: "10",
+    year: util.getYear(new Date()),
+    month: util.getMonth(new Date()),
   },
 
   /**
