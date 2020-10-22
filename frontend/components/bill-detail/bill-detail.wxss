@@ -1,0 +1,46 @@
+@import "/style/iconfont.wxss";
+
+.container {
+    padding: 5px 10px
+}
+
+.line {
+    margin-top: 5px;
+    border-bottom: 1px solid rgb(196, 196, 185);
+}
+
+.top {
+    display: flex;
+    color: rgb(196, 196, 185);
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.date {
+    flex: 1;
+}
+
+.small-tag {
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.detail {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+}
+
+.item-situation {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.item-situation-inner {
+    width: 100%;
+    display: flex;
+}
+.item-situation-inner-name {
+    flex: 1;
+    font-weight: 350;
+}

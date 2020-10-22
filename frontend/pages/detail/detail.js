@@ -11,6 +11,11 @@ Page({
   data: {
     year: util.getYear(new Date()),
     month: util.getMonth(new Date()),
+    items: [{
+      id: 1
+    },{
+      id: 2
+    }]
   },
 
   /**

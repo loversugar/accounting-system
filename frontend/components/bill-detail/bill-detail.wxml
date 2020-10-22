@@ -1,0 +1,32 @@
+<view class="container">
+	<view class="top">
+		<text class="date">10月24日 星期六</text>
+		<text class="consumption">支出： 51</text>
+	</view>
+	<view class="line" />
+
+	<block
+	 wx:for="{{items}}"
+	 wx:key="index"
+	>
+		<view class="detail">
+			<view>
+				<i
+				 style="font-size:25px;background-color:#00b38a;"
+				 class="iconfont {{item.categoryUrl}} small-tag"
+				/>
+			</view>
+
+			<view class="item-situation">
+				<view class="item-situation-inner">
+					<view class="item-situation-inner-name">购物</view>
+					<view>-3</view>
+				</view>
+				<view class="line" />
+			</view>
+		</view>
+
+	</block>
+
+</view>
+

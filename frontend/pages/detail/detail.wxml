@@ -20,5 +20,22 @@
 			<view class="item">1000元</view>
 		</view>
 	</view>
+	<scroll-view
+	 class="bill-detail"
+	 scroll-x="false"
+	 scroll-y="true"
+	 upper-threshold="50"
+	 lower-threshold="50"
+	 scroll-into-view=""
+	 scroll-with-animation="true"
+	 enable-back-to-top="false"
+	>
+		<block
+		 wx:for="{{items}}"
+		 wx:key="id"
+		>
+			<bill-detail/>
+		</block>
+	</scroll-view>
 </view>
 

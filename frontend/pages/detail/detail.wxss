@@ -25,3 +25,7 @@ view .item {
 .spending {
     flex: 1;
 }
+
+.bill-detail {
+    padding-top: 50px;
+}
