@@ -1,2 +1,11 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="profile-header">
+	<view class="avatar-url">
+		<open-data type="userAvatarUrl" />
+	</view>
+	<open-data
+	 type="userNickName"
+	 class="nickname"
+	/>
+</view>
+
