@@ -2,9 +2,9 @@ package api
 
 import (
 	"accounting/datamodals"
-	"accounting/service"
 	"github.com/gin-gonic/gin"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -40,16 +40,22 @@ func addBill(ctx *gin.Context) {
 	}
 }
 
-func getBillByMonth(ctx *gin.Context) {
+func getBillByDate(ctx *gin.Context) {
 	userId, err := strconv.Atoi(ctx.Query("userId"))
 	if err != nil {
 
 	}
-	month, err := strconv.Atoi(ctx.Query("month"))
-	if err != nil {
+
+	startDate := strings.Trim(ctx.Query("startDate"), " ")
+	endDate := strings.Trim(ctx.Query("endDate"), " ")
+
+	if len(startDate) == 0 {
 
 	}
 
-	billService := service.NewBillService()
-	billService.GetBillByMonth(userId, month)
+	if len(endDate) == 0 {
+
+	}
+
+	billService.GetBillByDate(userId, startDate, endDate);
 }

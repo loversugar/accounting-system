@@ -22,7 +22,7 @@ func Routes(router *gin.Engine)  {
 	billApi := v1.Group("bill")
 	{
 		billApi.POST("addBill", addBill)
-		billApi.GET("getBillByMonth", getBillByMonth)
+		billApi.GET("getBillByMonth", getBillByDate)
 	}
 	categoryApi := v1.Group("category")
 	{

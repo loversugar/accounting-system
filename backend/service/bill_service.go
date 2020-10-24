@@ -10,6 +10,7 @@ import (
 type IBillService interface {
 	AddBill(bill *datamodals.Bill, categoryId int) *exception.ApiException
 	GetBillByMonth(userId int, month int)
+	GetBillByDate(userId int, startDate, endDate string) *[]datamodals.Bill
 }
 
 func NewBillService() IBillService {
@@ -19,6 +20,10 @@ func NewBillService() IBillService {
 type BillService struct {
 	billRepository repository.IBillRepository
 	categoryRepository repository.ICategoryRepository
+}
+
+func (b BillService) GetBillByDate(userId int, startDate, endDate string) *[]datamodals.Bill {
+	panic("implement me")
 }
 
 func (b BillService) GetBillByMonth(userId int, month int) {
