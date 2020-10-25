@@ -12,7 +12,7 @@ type Bill struct {
 	UserId string `json:"userId" form:"userId"`
 	Consumption float32 `json:"consumption" form:"consumption"`
 	Note string `json:"note" form:"note"`
-	SelectedTime time.Time `json:"selectedTime" form:"selectedTime"`
+	SelectedTime string `json:"selectedTime" form:"selectedTime"`
 	CategoryId int `json:"categoryId" form:"categoryId`
 }
 
