@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"accounting/constants"
 	"accounting/datamodals"
 	"accounting/util"
 	"github.com/sirupsen/logrus"
@@ -9,6 +10,7 @@ import (
 
 type IBillRepository interface {
 	InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error
+	SelectBillsByDate(userId int, startDate, endDate string) *[]datamodals.BillCategoryResult
 }
 
 func NewBillRepository() IBillRepository {
@@ -22,6 +24,27 @@ func NewBillRepository() IBillRepository {
 
 type BillRepository struct {
 	db *gorm.DB
+}
+
+func (b BillRepository) SelectBillsByDate(userId int, startDate, endDate string) *[]datamodals.BillCategoryResult {
+	var results []datamodals.BillCategoryResult
+	b.db.
+		Table(constants.Bill).
+		Select(constants.Bill+".id as bill_id, " +
+			constants.Bill + ".consumption as consumption, " +
+			constants.Bill + ".note as note, " +
+			constants.Bill +".selected_time as selected_time, " +
+			constants.BillCategory +".category_name as category_name, " +
+			constants.BillCategory + ".category_url as category_url").
+		Joins(
+			"join " + constants.BillCategory +
+				" on " + constants.Bill+  ".id = " + constants.BillCategory + ".bill_id").
+		Where(
+			constants.Bill + ".id = ? and " +
+				constants.Bill + ".selected_time between ? and ?",
+				userId, startDate, endDate).Scan(&results)
+
+	return &results
 }
 
 func (b BillRepository) InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error {

@@ -12,7 +12,7 @@ create table bill (
     username varchar(255),
     consumption decimal(6, 2),
     note varchar(255),
-    selected_time timestamp not null,
+    selected_time char(10) not null,
     create_time timestamp not null
 );
 

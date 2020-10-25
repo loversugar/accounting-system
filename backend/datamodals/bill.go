@@ -7,7 +7,7 @@ type Bill struct {
 	UserId string `gorm:"column:user_id"`
 	Consumption float32 `gorm:"column:consumption"`
 	Note string `gorm:"column:note"`
-	SelectedTime time.Time `gorm:"column:selected_time"`
+	SelectedTime string `gorm:"column:selected_time"`
 	CreateTime time.Time `gorm:"column:create_time"`
 }
 
@@ -25,4 +25,13 @@ type Category struct {
 	UserId int `json:"userId" gorm:"column:user_id"'`
 	IsPrivate bool `json:"-" gorm:"column:is_private"`
 	Deleted bool `json:"-" gorm:"column:deleted"`
+}
+
+type BillCategoryResult struct {
+	BillID string `json:"billId"`
+	Consumption float32 `json:"consumption"`
+	Note string `json:"note"`
+	SelectedTime string `json:"selectedTime`
+	CategoryName string `json:"categoryName"`
+	CategoryUrl string `json:"categoryUrl"`
 }
