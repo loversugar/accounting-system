@@ -240,9 +240,12 @@ Component({
       } else {
         consumption = dataMoney
       }
+
       this.triggerEvent("sendBill", {
         categoryId: this.data.categoryId,
-        selectedTime: this.data.selectedTime,
+        selectedTime: util.getYear(this.data.selectedTime) 
+          + "-" + util.getMonth(this.data.selectedTime) 
+          + "-" + util.getDay(this.data.selectedTime),
         consumption: parseFloat(consumption),
         note: this.data.note,
         userId: app.globalData.userId

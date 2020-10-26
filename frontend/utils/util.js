@@ -17,6 +17,10 @@ const getMonth = date => {
   return [date.getMonth()+1].map(formatNumber)
 }
 
+const getDay = date => {
+  return [date.getDate()].map(formatNumber)
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -25,5 +29,6 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime,
   getYear: getYear,
-  getMonth: getMonth
+  getMonth: getMonth,
+  getDay: getDay
 }
