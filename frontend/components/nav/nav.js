@@ -11,6 +11,7 @@ Component({
     },
     prePageUrl: String  
   },
+
   lifetimes: {
     attached: function() {
       this.setData({

@@ -63,8 +63,6 @@ Page({
     }
   },
 
-  
-
   getCategories() {
     wx.request({
       url: app.globalData.remoteAddress + "/category/getCategories",
@@ -153,9 +151,9 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: (result)=>{
-        wx.hideLoading();    
-        wx.switchTab({
-          url: '../detail/detail',
+        wx.hideLoading(); 
+        wx.reLaunch({
+          url: this.data.prePageUrl,
         });
       },
       fail: ()=>{},
