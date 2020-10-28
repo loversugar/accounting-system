@@ -10,7 +10,7 @@ import (
 
 type IBillRepository interface {
 	InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error
-	SelectBillsByDate(userId int, startDate, endDate string) *[]datamodals.BillCategoryResult
+	SelectBillsByDate(userId int, startDate, endDate string) []*datamodals.BillCategoryResult
 }
 
 func NewBillRepository() IBillRepository {
@@ -26,9 +26,9 @@ type BillRepository struct {
 	db *gorm.DB
 }
 
-func (b BillRepository) SelectBillsByDate(userId int, startDate, endDate string) *[]datamodals.BillCategoryResult {
-	var results []datamodals.BillCategoryResult
-	b.db.
+func (b BillRepository) SelectBillsByDate(userId int, startDate, endDate string) []*datamodals.BillCategoryResult {
+	var results []*datamodals.BillCategoryResult
+	b.db.Debug().
 		Table(constants.Bill).
 		Select(constants.Bill+".id as bill_id, " +
 			constants.Bill + ".consumption as consumption, " +
@@ -40,11 +40,11 @@ func (b BillRepository) SelectBillsByDate(userId int, startDate, endDate string)
 			"join " + constants.BillCategory +
 				" on " + constants.Bill+  ".id = " + constants.BillCategory + ".bill_id").
 		Where(
-			constants.Bill + ".id = ? and " +
+			constants.Bill + ".user_id = ? and " +
 				constants.Bill + ".selected_time between ? and ?",
 				userId, startDate, endDate).Scan(&results)
 
-	return &results
+	return results
 }
 
 func (b BillRepository) InsertBill(bill *datamodals.Bill, category *datamodals.BillCategory) error {
