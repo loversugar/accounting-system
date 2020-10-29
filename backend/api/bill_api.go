@@ -57,5 +57,10 @@ func getBillByDate(ctx *gin.Context) {
 
 	}
 
-	billService.GetBillByDate(userId, startDate, endDate);
+	returnMap := billService.GetBillByDate(userId, startDate, endDate);
+	ctx.JSON(200, gin.H{
+		"code": 200,
+		"message": nil,
+		"data": returnMap,
+	})
 }

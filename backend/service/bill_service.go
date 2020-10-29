@@ -10,7 +10,7 @@ import (
 type IBillService interface {
 	AddBill(bill *datamodals.Bill, categoryId int) *exception.ApiException
 	GetBillByMonth(userId int, month int)
-	GetBillByDate(userId int, startDate, endDate string) *[]datamodals.Bill
+	GetBillByDate(userId int, startDate, endDate string) map[string][]*datamodals.BillCategoryResult
 }
 
 func NewBillService() IBillService {
@@ -22,8 +22,20 @@ type BillService struct {
 	categoryRepository repository.ICategoryRepository
 }
 
-func (b BillService) GetBillByDate(userId int, startDate, endDate string) *[]datamodals.Bill {
-	panic("implement me")
+func (b BillService) GetBillByDate(userId int, startDate, endDate string) map[string][]*datamodals.BillCategoryResult {
+	var returnMap = make(map[string][]*datamodals.BillCategoryResult)
+	results := b.billRepository.SelectBillsByDate(userId, startDate, endDate)
+
+	for _, result := range results {
+		if returnMap[result.SelectedTime] == nil {
+			var sliceA []*datamodals.BillCategoryResult
+			returnMap[result.SelectedTime] = append(sliceA, result)
+		} else {
+			returnMap[result.SelectedTime] = append(returnMap[result.SelectedTime], result)
+		}
+	}
+
+	return returnMap
 }
 
 func (b BillService) GetBillByMonth(userId int, month int) {

@@ -42,7 +42,8 @@ func (b BillRepository) SelectBillsByDate(userId int, startDate, endDate string)
 		Where(
 			constants.Bill + ".user_id = ? and " +
 				constants.Bill + ".selected_time between ? and ?",
-				userId, startDate, endDate).Scan(&results)
+				userId, startDate, endDate).
+		Order(constants.Bill + ".selected_time desc").Scan(&results)
 
 	return results
 }
