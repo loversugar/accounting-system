@@ -22,7 +22,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     
+     this.getBills()
+  },
+
+  getBills: function() {
+    var reqTask = wx.request({
+      url: app.globalData.remoteAddress + "/bill/getBillByDate?userId=1&startDate=2020-11-01&endDate=2020-11-30",
+      data: {},
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log(result)
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**
