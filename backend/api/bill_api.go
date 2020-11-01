@@ -3,6 +3,7 @@ package api
 import (
 	"accounting/datamodals"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"strconv"
 	"strings"
 	"time"
@@ -49,12 +50,12 @@ func getBillByDate(ctx *gin.Context) {
 	startDate := strings.Trim(ctx.Query("startDate"), " ")
 	endDate := strings.Trim(ctx.Query("endDate"), " ")
 
-	if len(startDate) == 0 {
-
-	}
-
-	if len(endDate) == 0 {
-
+	if len(startDate) == 0 || len(endDate) == 0 {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"code": http.StatusUnauthorized,
+			"message": "startDate or endDate cannot be empty",
+			"data": nil,
+		})
 	}
 
 	returnMap := billService.GetBillByDate(userId, startDate, endDate);
