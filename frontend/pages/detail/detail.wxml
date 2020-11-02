@@ -32,9 +32,13 @@
 	>
 		<block
 		 wx:for="{{items}}"
-		 wx:key="id"
+		 wx:for-index="key"
+		 wx:key="key"
 		>
-			<bill-detail/>
+			<bill-detail
+			 time="{{key}}"
+			 item="{{item}}"
+			/>
 		</block>
 	</scroll-view>
 </view>

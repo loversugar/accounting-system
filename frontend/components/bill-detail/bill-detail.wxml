@@ -1,12 +1,12 @@
 <view class="container">
 	<view class="top">
-		<text class="date">10月24日 星期六</text>
-		<text class="consumption">支出： 51</text>
+		<text class="date">{{time}} {{dateName}}</text>
+		<text class="consumption">支出： {{countNumber}}</text>
 	</view>
 	<view class="line" />
 
 	<block
-	 wx:for="{{items}}"
+	 wx:for="{{item}}"
 	 wx:key="index"
 	>
 		<view class="detail">
@@ -19,8 +19,8 @@
 
 			<view class="item-situation">
 				<view class="item-situation-inner">
-					<view class="item-situation-inner-name">购物</view>
-					<view>-3</view>
+					<view class="item-situation-inner-name">{{item.note? item.note: item.categoryName}}</view>
+					<view>-{{item.consumption}}</view>
 				</view>
 				<view class="line" />
 			</view>

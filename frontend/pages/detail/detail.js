@@ -32,11 +32,15 @@ Page({
       header: {'content-type':'application/json'},
       method: 'GET',
       dataType: 'json',
-      responseType: 'text',
+      responseType: '',
       success: (result)=>{
-        console.log(result)
+        this.setData({
+          items: result.data.data
+        })
+        console.log(result.data.data)
       },
-      fail: ()=>{},
+      fail: ()=>{
+      },
       complete: ()=>{}
     });
   },
