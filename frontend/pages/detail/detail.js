@@ -22,18 +22,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.getBills()
+    console.log(this.data.year)
+     this.getBills(
+       this.getStartDate(this.data.year, this.data.month), 
+       this.getEndDate(this.data.year, this.data.month)
+       )
   },
 
-  getBills: function() {
-    var reqTask = wx.request({
-      url: app.globalData.remoteAddress + "/bill/getBillByDate?userId=1&startDate=2020-11-01&endDate=2020-11-30",
+  getBills: function(startDate, endDate) {
+    console.log(startDate)
+    wx.showLoading({
+      title: "加载数据中...",
+      mask: true,
+    });
+    wx.request({
+      url: app.globalData.remoteAddress + "/bill/getBillByDate?userId=1&startDate=" + startDate
+       + "&endDate=" + endDate,
       data: {},
       header: {'content-type':'application/json'},
       method: 'GET',
       dataType: 'json',
       responseType: '',
       success: (result)=>{
+        for (var attrName in result.data.data) {
+          console.log(attrName)
+        }
         this.setData({
           items: result.data.data
         })
@@ -43,6 +56,7 @@ Page({
       },
       complete: ()=>{}
     });
+    wx.hideLoading();
   },
 
   /**
@@ -58,13 +72,35 @@ Page({
 
   getDateTime: function(e) {
     if (e.detail.value) {
-      console.log(e)
       var dataArray = e.detail.value.split('-')
+
+      var year = dataArray[0]
+      var month = dataArray[1]
+
       this.setData({
-        year: dataArray[0],
-        month: dataArray[1]
+        year: year,
+        month: month
       })
+
+      this.getBills(
+        this.getStartDate(year, month), 
+        this.getEndDate(year, month)
+        )
     }
+  },
+
+  getStartDate: function(year, month) {
+      var suffix = year + "-" + month + "-"
+      return suffix + "01"
+  },
+
+  getEndDate: function(year, month) {
+      var suffix = year + "-" + month + "-"
+
+      var currentMonthDay = new Date(parseInt(year), parseInt(month), 0).getDate()
+
+      return suffix + currentMonthDay
+
   },
 
   /**
