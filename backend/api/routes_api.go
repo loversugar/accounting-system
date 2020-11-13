@@ -1,6 +1,7 @@
 package api
 
 import (
+	"accounting/middleware"
 	"accounting/service"
 	"github.com/gin-gonic/gin"
 )
@@ -15,17 +16,20 @@ func Routes(router *gin.Engine)  {
 	billService = service.NewBillService()
 
 	v1 := router.Group("accounting-system")
+
 	userApi := v1.Group("user")
 	{
 		userApi.GET("login", login)
 	}
+
 	billApi := v1.Group("bill")
 	{
-		billApi.POST("addBill", addBill)
-		billApi.GET("getBillByDate", getBillByDate)
+		billApi.POST("addBill", middleware.Authorize(), addBill)
+		billApi.GET("getBillByDate", middleware.Authorize(), getBillByDate)
 	}
+
 	categoryApi := v1.Group("category")
 	{
-		categoryApi.GET("getCategories", getCategories)
+		categoryApi.GET("getCategories", middleware.Authorize(), getCategories)
 	}
 }

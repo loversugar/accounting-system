@@ -3,14 +3,20 @@
 ## Version 1.0
 ### Module
 #### Detail
-- [ ] get the list of running account by date
-- [ ] set up the buget
+- [ x ] get the list of running account by date
+- [ x ] set up the buget
 
 #### Chart
 #### Publish
-- [ ] publish a new record
+- [ x ] publish a new record
 #### Community
 #### Mine
-- [ ] get headProfile
-- [ ] get the total of all consumption records for the month
+- [ x ] get headProfile
+- [ x ] get the total of all consumption records for the month
 ---
+## Version 1.1
+## 优化代码
+- [ ] 添加拦截器，验证数据
+- [ ] 规范日志打印
+- [ ] response和request，添加规范
+- [ ] 异常处理，规范化
