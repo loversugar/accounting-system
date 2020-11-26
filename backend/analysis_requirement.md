@@ -3,16 +3,16 @@
 ## Version 1.0
 ### Module
 #### Detail
-- [ x ] get the list of running account by date
-- [ x ] set up the buget
+- [x] get the list of running account by date
+- [x] set up the buget
 
 #### Chart
 #### Publish
-- [ x ] publish a new record
+- [x] publish a new record
 #### Community
 #### Mine
-- [ x ] get headProfile
-- [ x ] get the total of all consumption records for the month
+- [x] get headProfile
+- [x] get the total of all consumption records for the month
 ---
 ## Version 1.1
 ## 优化代码
