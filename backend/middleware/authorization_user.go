@@ -2,12 +2,19 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
+
+type AA struct {
+	name string
+	password string
+
+}
 
 func Authorize() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		logrus.Info("invoked")
+		aa := &AA{name:"test", password:"test"}
+		log.Info("cc", aa);
 		c.Next()
 	}
 }

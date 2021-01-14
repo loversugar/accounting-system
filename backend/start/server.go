@@ -10,13 +10,13 @@ import (
 func main()  {
 	router := gin.Default()
 
+	router.Use(middleware.LoggerToFile())
 	router.GET("/ping", func(context *gin.Context) {
 		context.Writer.Write([]byte("pong"))
 	})
 
 	api.Routes(router)
 
-	router.Use(middleware.Logger())
 
 	router.Run(":8888")
 

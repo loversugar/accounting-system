@@ -14,7 +14,7 @@ import (
 
 func Logger() gin.HandlerFunc {
 	logClient := log.New()
-	var logPath = "/var/log/katy"// 日志打印到指定的目录
+	var logPath = "/home/C5311429/totti"// 日志打印到指定的目录
 	// 目录不存在则创建
 	//if !util.PathExists(logPath) {
 	//	os.MkdirAll(logPath, os.ModePerm)
